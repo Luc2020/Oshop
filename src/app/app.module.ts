@@ -1,5 +1,6 @@
 
 import { NgModule } from '@angular/core';
+import { UserService } from 'src/app/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from'@angular/router'
 
@@ -23,6 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ import { AuthGuard } from './auth-guard.service';
     BrowserModule,
     AppRoutingModule,
     AngularFireAuthModule,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     NgbModule,
@@ -61,7 +65,8 @@ import { AuthGuard } from './auth-guard.service';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
