@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase} from '@angular/fire/database';
-import { AngularFirestore } from '@angular/fire/firestore'
 import firebase from  'firebase';
+import {Observable} from 'rxjs/Observable';
+import { AppUser } from './models/app-user';
+import { AngularFireObject, AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private db: AngularFirestore) { }
+
+  constructor(private db: AngularFireDatabase) {
+
+  }
 
   save(user: firebase.User) {
-    this.db.doc('/users/' + user.uid).set({
+    this.db.object('/users/' + user.uid).update({
       name: user.displayName,
       email: user.email
-    }, {merge: true})
-    .then(() => console.log('user saved succesfully'))
-    .catch((reason:any) => console.log('user saved failed:', reason));
+    });
+  };
+
+  get(uid: string): AngularFireObject<AppUser> {
+    return this.db.object('/users/' + uid);
   }
+
 }
