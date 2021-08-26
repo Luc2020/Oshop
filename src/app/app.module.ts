@@ -25,7 +25,8 @@ import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
-
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './product.service'
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
@@ -47,6 +48,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireAuthModule,
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
@@ -98,7 +100,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AuthGuard,
     AdminAuthGuard,
     UserService,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
