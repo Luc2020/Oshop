@@ -30,6 +30,7 @@ import { ProductService } from './product.service'
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CustomFormsModule } from 'ng2-validation';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
   imports: [
     BrowserModule,
     FormsModule,
+    CustomFormsModule,
     AppRoutingModule,
     AngularFireAuthModule,
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
