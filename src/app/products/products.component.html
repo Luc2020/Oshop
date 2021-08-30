@@ -1,1 +1,24 @@
-<p>products works!</p>
+
+<div class="row">
+  <div class="col-3">
+    <ul class="list-group">
+      <li *ngFor="let c of categories$ | async" class="list-group-item"> {{ c.name }}</li>
+    </ul>
+  </div>
+  <div class="col">
+    <div class="row row-cols-2">
+      <ng-container *ngFor="let p of products$ | async" >
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img [src]="p.data.imageUrl" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ p.data.title }}</h5>
+              <p class="card-text">{{ p.data.price | currency:'USD':true }}</p>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
