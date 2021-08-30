@@ -8,15 +8,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
+  term: any;
   products$: Observable<any>;
 
   constructor(private productService: ProductService) {
     this.products$ = this.productService.getAll();
  }
 
-  filter(query: string) {
-    console.log(query);
-  }
+  // filter(query: string) {
+  //   console.log(query);
+  // }
 
   ngOnInit(): void {
   }
